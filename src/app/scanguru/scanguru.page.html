@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>IMBAS KEHADIRAN GURU</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p class="ion-padding">
+        Kelas: {{ kelasNama }}<br>
+         Subjek: {{ subjekNama }} <br>
+         Tarikh: {{ dateToday | date: 'dd/MM/yyyy' }}
+      </p>
+      <div *ngIf="statusRPH else unavailable">
+        <ion-button (click)="scan()" style="height:100px" expand="full" >
+          IMBAS KOD QR
+        </ion-button>
+      </div>
+      <ng-template #unavailable>
+        <p style="color:red" class="ion-text-center">
+          Sila sediakan RPH terlebih dahulu.
+        </p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+  <ion-row class="scan-button" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="scan-box" [hidden]="!scanActive"></div>
+</ion-content>

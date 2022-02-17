@@ -1,0 +1,7 @@
+{
+  "name": "smahadir",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

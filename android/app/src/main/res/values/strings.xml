@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">smahadir</string>
+    <string name="title_activity_main">smahadir</string>
+    <string name="package_name">my.gov.pahang.smahadir</string>
+    <string name="custom_url_scheme">my.gov.pahang.smahadir</string>
+</resources>

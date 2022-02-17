@@ -1,0 +1,35 @@
+<ion-content>
+  <form>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2" style="align-items: center;">
+        <ion-img src='./assets/main.png'></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-item>
+          <ion-label position="floating"> No.K/P </ion-label>
+          <ion-input [(ngModel)]="postData.txtKp" type="text" name="txtKp">  </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-item>
+          <ion-label position="floating"> Kata Laluan </ion-label>
+          <ion-input [(ngModel)]="postData.txtPass" type="password" name="txtPass"> </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button expand="block" type="submit" color="primary" (click)="login()" > LOG MASUK </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

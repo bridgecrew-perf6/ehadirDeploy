@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>REKOD TIDAK HADIR</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p class="ion-padding">
+        Kelas: {{ kelasNama }}<br>
+         Subjek: {{ subjekNama }} <br>
+         Tarikh: {{ dateToday | date: 'dd/MM/yyyy' }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="statusRPH else unavailable">
+  <form>
+  <ion-row>
+    <ion-col align-self-center>
+      <ion-item>
+        <ion-label position="floating"> Alasan </ion-label>
+        <ion-select (ionChange)="checkSelection()" required [(ngModel)]="postData.txtAlasan" name="txtAlasan" value="{{cutiId}}">
+          <ion-select-option *ngFor="let alasan of alasanList" value="{{alasan.cuti_id}}">{{alasan.cuti_ket}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  *ngIf="statusDrpDwn===1">
+    <ion-col align-self-center>
+      <ion-item>
+        <ion-label position="floating"> Kematian </ion-label>
+        <ion-select [(ngModel)]="postData.txtCatat" name="txtCatat">
+          <ion-select-option value="SUAMI">SUAMI</ion-select-option>
+          <ion-select-option value="ISTERI">ISTERI</ion-select-option>
+          <ion-select-option value="ANAK">ANAK</ion-select-option>
+          <ion-select-option value="IBU">IBU</ion-select-option>
+          <ion-select-option value="BAPA">BAPA</ion-select-option>
+          <ion-select-option value="IBU MERTUA">IBU MERTUA</ion-select-option>
+          <ion-select-option value="BAPA MERTUA">BAPA MERTUA</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="statusTxtBx===1">
+    <ion-col align-self-center>
+      <ion-item>
+        <ion-label position="floating"> {{titleTxtBx}} </ion-label>
+        <ion-input [(ngModel)]="postData.txtCatat" type="text" name="txtCatat"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col align-self-center>
+      <ion-button expand="block" type="submit" color="primary" (click)="simpan()" > SIMPAN </ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+</div>
+<ng-template #unavailable>
+  <p style="color:red" class="ion-text-center">
+    Sila sediakan RPH terlebih dahulu.
+  </p>
+</ng-template>
+</ion-content>

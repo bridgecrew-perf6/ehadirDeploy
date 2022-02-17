@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>SENARAI SUBJEK DIAJAR</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <ion-img src='https://sma.pahang.gov.my/uploads/{{ lencana }}'></ion-img>
+          </ion-col>
+
+          <ion-col>
+            {{ sekolah | uppercase }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      </ion-card-subtitle>
+    <ion-card-title class="ion-text-center">{{ namaGuru | uppercase }}</ion-card-title>
+  </ion-card-header>
+</ion-card>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let subject of subjectList">
+      <ion-item>
+        <ion-label>
+          <h1>{{ subject.kelas_nama | uppercase }}</h1>
+          <p>{{ subject.subjek_nama | uppercase }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option [routerLink]="'/scanguru/'+ subject.gs_id + '/' + subject.kelas_id + '/' + subject.subjek_nama + '/' + subject.kelas_nama" routerDirection="forward" style="width: 120px;">Hadir</ion-item-option>
+        <ion-item-option [routerLink]="'/tidakhadir/'+ subject.gs_id + '/' + subject.kelas_id + '/' + subject.subjek_nama + '/' + subject.kelas_nama" routerDirection="forward" color="danger">Tidak Hadir</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

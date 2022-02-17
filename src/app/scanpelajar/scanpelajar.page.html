@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>IMBAS KEHADIRAN PELAJAR</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [style.--background]="scanActive?'#00000000':'#ffffff'">
+  <ion-card>
+    <ion-card-content>
+      <p class="ion-padding">
+        Guru Kelas: {{ guruNama }} <br>
+        Kelas: {{ kelasNama }}<br>
+        Tarikh: {{ dateToday | date: 'dd/MM/yyyy' }}
+      </p>
+      <div>
+        <ion-button (click)="scan()" style="height:100px" expand="full" >
+          IMBAS KOD QR
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-row class="scan-button" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="scan-box" [hidden]="!scanActive"></div>
+
+</ion-content>

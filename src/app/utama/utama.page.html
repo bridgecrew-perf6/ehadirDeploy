@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2" style="align-items: center;">
+        <ion-img src='./assets/main.png'></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button style="min-height: 80px; font-size:18px" expand="block" color="tertiary" (click)="scanGuru()">
+          <ion-icon slot="start" name="person"></ion-icon>Kehadiran Guru</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button style="min-height: 80px;font-size:18px" expand="block" color="tertiary" (click)="scanPelajar()">
+          <ion-icon slot="start" name="people"></ion-icon> Kehadiran Pelajar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button style="min-height: 50px;font-size:18px" expand="block" color="danger" (click)="logout()">
+           Log Keluar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

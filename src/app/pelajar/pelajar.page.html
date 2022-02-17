@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>SENARAI KELAS</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <ion-img src='https://sma.pahang.gov.my/uploads/{{ lencana }}'></ion-img>
+          </ion-col>
+
+          <ion-col>
+            {{ sekolah | uppercase }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      </ion-card-subtitle>
+    <ion-card-title class="ion-text-center">{{ namaGuru | uppercase }}</ion-card-title>
+  </ion-card-header>
+</ion-card>
+<div *ngIf="classList else loading">
+  <ion-list >
+    <ion-item *ngFor="let kelas of classList" [routerLink]="['/scanpelajar',kelas.kelas_id, kelas.kelas_nama, kelas.guru_nama, kelas.guru_id]">
+      <ion-label>{{kelas.kelas_nama}}</ion-label>
+    </ion-item>
+  </ion-list>
+</div>
+<ng-template #loading>
+  <p>Loading..</p>
+</ng-template>
+</ion-content>
