@@ -1,8 +1,9 @@
 import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
-
+import { Router } from '@angular/router';
+import { App as CapacitorApp } from '@capacitor/app';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,8 +19,19 @@ export class LoginPage implements OnInit {
   constructor(
     public authService: AuthService,
     public navCtrl: NavController,
-    public storageService: StorageService
-  ) { }
+    public storageService: StorageService,
+    public router: Router,
+    public platform: Platform,
+    public routerOutlet: IonRouterOutlet
+  ) {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      if(this.router.url=='/utama' || this.router.url=='/login'){
+        CapacitorApp.exitApp();
+      }else{
+        this.navCtrl.pop();
+      }
+    });
+  }
 
   ngOnInit() {
 

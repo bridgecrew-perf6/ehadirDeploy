@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
 import { AuthService } from '../services/auth.service';
-import { Plugins } from '@capacitor/core';
-
-const { app } = Plugins;
+// import { Plugins } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
+// const { App } = Plugins;
 @Component({
   selector: 'app-utama',
   templateUrl: './utama.page.html',
@@ -21,12 +21,14 @@ export class UtamaPage implements OnInit {
     public platform: Platform,
     public routerOutlet: IonRouterOutlet
   ) {
-    this.platform.backButton.subscribeWithPriority(-1, () => {
-      if(!this.routerOutlet.canGoBack){
-        app.exitApp();
-      }
-    });
-  }
+      this.platform.backButton.subscribeWithPriority(10, () => {
+        if(this.router.url=='/utama' || this.router.url=='/login'){
+          CapacitorApp.exitApp();
+        }else{
+          this.navCtrl.pop();
+        }
+      });
+   }
 
   ngOnInit() {
   }
@@ -34,6 +36,7 @@ export class UtamaPage implements OnInit {
   scanGuru() {
     this.router.navigate(['guru']);
   }
+
 
   scanPelajar() {
     this.router.navigate(['pelajar']);

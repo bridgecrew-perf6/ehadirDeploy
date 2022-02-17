@@ -21,12 +21,12 @@ export class HomePage {
    checkToken() {
      this.storageService.get('token').then((tkn: string) => {
        if(tkn) {
-         this.navCtrl.navigateRoot(['utama']);
+         this.navCtrl.navigateRoot('utama');
        } else {
-         this.navCtrl.navigateRoot(['login']);
+         this.navCtrl.navigateRoot('login');
        }
      }).catch((err) => {
-       this.navCtrl.navigateRoot(['login']);
+       this.navCtrl.navigateRoot('login');
      });
    }
 
