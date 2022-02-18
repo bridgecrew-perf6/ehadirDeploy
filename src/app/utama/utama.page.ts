@@ -48,9 +48,10 @@ export class UtamaPage implements OnInit {
 
     this.storageService.get('token').then((tkn: string) => {
       this.authService.logout(jsonData, tkn).subscribe((res: any) => {
-        localStorage.clear();
-        sessionStorage.clear();
         if (res.status === 'Berjaya') {
+          // localStorage.clear();
+          // sessionStorage.clear();
+          this.storageService.clear();
           this.navCtrl.navigateRoot('/login');
         }
       });

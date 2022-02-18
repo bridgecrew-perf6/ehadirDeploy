@@ -20,4 +20,12 @@ export class StorageService {
     const ret = await Storage.get({ key: storageKey });
     return JSON.parse(unescape(atob(ret.value)));
   }
+
+  async removeItem(key: string) {
+    await Storage.remove({ key });
+  }
+
+  async clear() {
+      await Storage.clear();
+  }
 }
